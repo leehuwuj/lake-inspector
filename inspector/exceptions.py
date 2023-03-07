@@ -1,0 +1,2 @@
+class CheckingPartitionException(Exception):
+    pass
