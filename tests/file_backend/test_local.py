@@ -37,3 +37,12 @@ class TestLocalFileBackend:
             path="tests/example_data"
         )
         assert res == 1
+
+    def test_get_size(self, local_file_client):
+        local_fb = LocalFileBackend(
+            client=local_file_client
+        )
+        res = local_fb.get_size(
+            path="tests/example_data"
+        )
+        assert res == 0
