@@ -11,6 +11,7 @@ from inspector.writer.file import FileWriter
 
 HDFS_USER = os.environ.get("HDFS_USER", None)
 HDFS_KRB_TICKET_CACHE = os.environ.get("HDFS_KRB_TICKET_CACHE", None)
+HDFS_HOST = os.environ.get("HDFS_USER", None)
 
 
 @click.command()
@@ -26,7 +27,7 @@ HDFS_KRB_TICKET_CACHE = os.environ.get("HDFS_KRB_TICKET_CACHE", None)
               default=None)
 def analyze(path: str, writer, write_uri):
     hdfs = pyarrow.fs.HadoopFileSystem(
-        host='nameservice1',
+        host=HDFS_HOST,
         user=HDFS_USER,
         kerb_ticket=HDFS_KRB_TICKET_CACHE
     )
@@ -53,6 +54,8 @@ def analyze(path: str, writer, write_uri):
         local_file = fs.LocalFileSystem()
         writer = FileWriter(fs=local_file)
         writer.write(metrics, uri=write_uri)
+
+    writer.write(metrics, uri=None)
 
 
 if __name__ == '__main__':
