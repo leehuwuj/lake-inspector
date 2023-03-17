@@ -5,7 +5,7 @@ description = "The inspector tool to inspect and validate raw data in data lake"
 authors = ["leehuwuj <leehuwuj@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "3.9.12"
+python = "^3.9.12"
 pytest = "^7.2.0"
 pyarrow = "^11.0.0"
 pandas = "^1.5.2"
