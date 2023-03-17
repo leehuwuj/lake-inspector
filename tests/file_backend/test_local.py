@@ -18,7 +18,7 @@ class TestLocalFileBackend:
         res = local_fb.get_all_partitions(
             path="tests/example_data"
         )
-        assert len(res) == 2
+        assert len(res) == 1
 
     def test_get_latest_partitions(self, local_file_client):
         local_fb = LocalFileBackend(
@@ -27,7 +27,7 @@ class TestLocalFileBackend:
         res = local_fb.get_latest_partitions(
             path="tests/example_data"
         )
-        assert res == '20230102'
+        assert res == ['date', '20230101', 'tests/example_data/dummy_1/date=20230101']
 
     def test_count_partition_files(self, local_file_client):
         local_fb = LocalFileBackend(
